@@ -1,0 +1,4 @@
+[submodule "formulas/nginx-formula"]
+	path = formulas/nginx-formula
+	url = git@github.com:saltstack-formulas/nginx-formula.git
+	branch = master
