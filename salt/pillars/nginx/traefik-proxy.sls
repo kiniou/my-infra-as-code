@@ -1,7 +1,17 @@
 nginx:
   install_from_repo: false
+  lookup:
+    package: nginx-extras
   service:
     enable: True
+  server:
+    config:
+      include: /etc/nginx/modules-enabled/*
+      stream:
+        server:
+          listen: '443'
+          proxy_pass: traefik.localhost:8443
+
   servers:
     managed:
       default:
@@ -13,9 +23,6 @@ nginx:
               - server_name: "*.ods.localhost *.docker.localhost"
               - listen:
                   - '80'
-              # Need some trusted ssl certificate before continuing
-              # - listen:
-              #     - '443 ssl'
               - location /:
                   - proxy_pass: http://localhost:8000
                   - proxy_set_header: Host $host
