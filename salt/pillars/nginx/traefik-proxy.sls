@@ -33,9 +33,6 @@ nginx:
               - server_name: traefik.localhost
               - listen:
                   - '80'
-              # Need some trusted ssl certificate before continuing
-              # - listen:
-              #     - '443 ssl'
               - location /:
                   - return: 301 /dashboard
               - location /dashboard/:
