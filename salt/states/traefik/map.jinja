@@ -1,0 +1,10 @@
+{# -*- mode: salt; coding: utf-8 -*- #}
+{% import_yaml "traefik/defaults.yml" as default_settings %}
+
+{## Merge in traefik pillar ##}
+{% set traefik = salt['pillar.get'](
+        'traefik',
+        default=default_settings.traefik,
+        merge=True
+    )
+%}

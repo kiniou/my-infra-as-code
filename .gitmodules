@@ -2,3 +2,7 @@
 	path = formulas/nginx-formula
 	url = git@github.com:saltstack-formulas/nginx-formula.git
 	branch = master
+[submodule "traefik-pebble"]
+	path = salt/states/traefik/files
+	url = git@github.com:kiniou/traefik-pebble.git
+	branch = master
