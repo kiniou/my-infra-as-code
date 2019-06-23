@@ -10,7 +10,7 @@ nginx:
       stream:
         server:
           listen: '443'
-          proxy_pass: 127.0.0.1:8443
+          proxy_pass: traefik.localhost:8443
 
   servers:
     managed:
@@ -24,7 +24,7 @@ nginx:
               - listen:
                   - '80'
               - location /:
-                  - proxy_pass: http://127.0.0.1:8000
+                  - proxy_pass: http://traefik.localhost:8000
                   - proxy_set_header: Host $host
       traefik-dashboard:
         enabled: True
@@ -36,8 +36,8 @@ nginx:
               - location /:
                   - return: 301 /dashboard
               - location /dashboard/:
-                  - proxy_pass: http://127.0.0.1:8080/dashboard/
+                  - proxy_pass: http://traefik.localhost:8080/dashboard/
                   - proxy_set_header: Host $host
               - location /api/:
-                  - proxy_pass: http://127.0.0.1:8080/api/
+                  - proxy_pass: http://traefik.localhost:8080/api/
                   - proxy_set_header: Host $host
