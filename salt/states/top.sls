@@ -5,3 +5,4 @@ base:
   'I@roles:www-dev':
     - match: compound
     - nginx
+    - traefik
