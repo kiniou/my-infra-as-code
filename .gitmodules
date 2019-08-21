@@ -6,3 +6,6 @@
 	path = salt/states/traefik/files
 	url = git@github.com:kiniou/traefik-pebble.git
 	branch = master
+[submodule "formulas/firewalld-formula"]
+	path = formulas/firewalld-formula
+	url = git@github.com:kiniou/firewalld-formula.git
