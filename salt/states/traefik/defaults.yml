@@ -6,3 +6,4 @@ traefik:
     https: 8443
     dashboard: 8080
     pebble: 14000
+    pebble_mgmt: 15000

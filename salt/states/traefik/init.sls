@@ -17,6 +17,7 @@ traefik-env:
         TRAEFIK_PORT_HTTPS={{ traefik.ports.https }}
         TRAEFIK_PORT_DASHBOARD={{ traefik.ports.dashboard }}
         PEBBLE_PORT={{ traefik.ports.pebble }}
+        PEBBLE_MGMT_PORT={{ traefik.ports.pebble_mgmt }}
     - require:
         - traefik-etc
 
