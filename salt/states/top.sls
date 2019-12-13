@@ -6,7 +6,7 @@ base:
     - match: compound
     - common.desktop
 
-  'I@roles:www-dev':
+  'I@roles:dev':
     - match: compound
-    - nginx
-    - traefik
+    - docker
+    - vagrant

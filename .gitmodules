@@ -9,3 +9,6 @@
 [submodule "formulas/firewalld-formula"]
 	path = formulas/firewalld-formula
 	url = git@github.com:kiniou/firewalld-formula.git
+[submodule "formulas/docker-formula"]
+	path = formulas/docker-formula
+	url = git@github.com:kiniou/docker-formula.git
