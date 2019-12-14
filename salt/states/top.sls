@@ -1,6 +1,7 @@
 base:
   '*':
     - common
+    - salt.minion
 
   'I@roles:desktop':
     - match: compound
@@ -8,6 +9,7 @@ base:
 
   'I@roles:dev':
     - match: compound
+    - salt.standalone
     - docker
     - docker.compose
     - vagrant
