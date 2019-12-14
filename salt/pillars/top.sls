@@ -1,8 +1,7 @@
 base:
-
   '*':
     - common
 
-  'roles:www-dev':
+  'roles:dev':
     - match: pillar
-    - nginx.traefik-proxy
+    - docker.base
