@@ -10,6 +10,7 @@ base:
   'I@roles:dev':
     - match: compound
     - salt.standalone
+    - unbound
     - docker
     - docker.compose
     - vagrant

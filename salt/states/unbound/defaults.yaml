@@ -1,0 +1,7 @@
+unbound:
+  enabled: False
+  directories:
+    python_scripts: /usr/local/share/unbound
+  configs: {}
+  module_config: "validator subnetcache iterator"
+  python_scripts: {}
