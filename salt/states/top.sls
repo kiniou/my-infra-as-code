@@ -9,4 +9,5 @@ base:
   'I@roles:dev':
     - match: compound
     - docker
+    - docker.compose
     - vagrant
