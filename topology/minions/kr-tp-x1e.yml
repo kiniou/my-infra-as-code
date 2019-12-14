@@ -1,3 +1,7 @@
+salt:
+  minion:
+    standalone: true
+
 roles:
   - desktop
   - dev

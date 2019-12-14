@@ -1,7 +1,14 @@
 base:
   '*':
     - common
+
+  'not I@salt:minion:standalone':
+    - match: compound
     - salt.minion
+
+  'I@salt:minion:standalone':
+    - match: compound
+    - salt.standalone
 
   'I@roles:desktop':
     - match: compound
@@ -9,7 +16,6 @@ base:
 
   'I@roles:dev':
     - match: compound
-    - salt.standalone
     - unbound
     - docker
     - docker.compose
