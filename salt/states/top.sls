@@ -1,6 +1,11 @@
 base:
-  '*':
-    - common
+  'packages:*':
+    - match: pillar
+    - packages
+
+  'packages:golang:*':
+    - match: pillar
+    - packages.golang
 
   'not I@salt:minion:standalone':
     - match: compound
@@ -9,10 +14,6 @@ base:
   'I@salt:minion:standalone':
     - match: compound
     - salt.standalone
-
-  'I@roles:desktop':
-    - match: compound
-    - common.desktop
 
   'I@roles:dev':
     - match: compound
