@@ -11,3 +11,4 @@ base:
     - packages.dev
     - unbound
     - docker
+    - vagrant
