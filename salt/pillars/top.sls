@@ -10,4 +10,4 @@ base:
     - match: pillar
     - packages.dev
     - unbound
-    - docker.base
+    - docker
