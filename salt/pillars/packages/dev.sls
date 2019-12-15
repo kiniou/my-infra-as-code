@@ -11,6 +11,7 @@ packages:
       - tig
       - live-build
       - build-essential
+      - apt-cacher-ng
   golang:
     goget:
       - github.com/jsha/minica
