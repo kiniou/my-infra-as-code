@@ -1,4 +1,9 @@
 base:
+
+  'aptly:*':
+    - match: pillar
+    - aptly
+
   'packages:*':
     - match: pillar
     - packages

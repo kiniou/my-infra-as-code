@@ -21,3 +21,6 @@
 [submodule "formulas/packages-formula"]
 	path = formulas/packages-formula
 	url = git@github.com:kiniou/packages-formula.git
+[submodule "formulas/aptly-formula"]
+	path = formulas/aptly-formula
+	url = git@github.com:kiniou/aptly-formula.git
