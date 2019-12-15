@@ -16,7 +16,7 @@ unbound:
         python-script: "/usr/local/share/unbound/resolve.py"
     20_test_zone: |
       server:
-        local-zone: "d.test" static
+        local-zone: "d.test" redirect
         local-data: "d.test. 10 IN CNAME traefik.docker"
   python_scripts:
     - /usr/local/share/unbound/resolve.py: salt://unbound/scripts/resolve.py
