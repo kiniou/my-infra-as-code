@@ -15,9 +15,23 @@ base:
     - match: compound
     - salt.standalone
 
-  'I@roles:dev':
-    - match: compound
+  'unbound:*':
+    - match: pillar
     - unbound
+
+  'docker:*':
+    - match: pillar
     - docker
     - docker.compose
+
+  'vagrant:*':
+    - match: pillar
     - vagrant
+
+  'nginx:*':
+    - match: pillar
+    - nginx
+
+  'firewalld:*':
+    - match: pillar
+    - firewalld
