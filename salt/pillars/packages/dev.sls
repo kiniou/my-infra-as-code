@@ -6,6 +6,7 @@ packages:
       - shellcheck
       - mercurial
       - git
+      - git-extras
       - gitk
       - git-buildpackage
       - tig
