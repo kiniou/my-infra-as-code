@@ -35,3 +35,7 @@ base:
   'firewalld:*':
     - match: pillar
     - firewalld
+
+  'debootstrap:*':
+    - match: pillar
+    - debootstrap

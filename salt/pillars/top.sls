@@ -9,6 +9,7 @@ base:
   'roles:dev':
     - match: pillar
     - packages.dev
+    - sbuild
     - unbound
     - docker
     - vagrant
