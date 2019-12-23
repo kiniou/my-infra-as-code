@@ -41,6 +41,7 @@ cd $(dirname $0)
         then
             echo "🔗 (re)Installing symlink "
             ln -sf "${formula_path}" "${formula_states}"
+            check_symlink "${formula_states}" "${formula_path}"
         fi
     done
 )
