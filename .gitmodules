@@ -26,3 +26,7 @@
 	path = formulas/debootstrap-formula
 	url = git@github.com:kiniou/debootstrap-formula.git
 	branch = master
+[submodule "formulas/sbp-formula"]
+	path = formulas/sbp-formula
+	url = git@github.com:kiniou/sbp-formula.git
+	branch = feat/formula-basics
