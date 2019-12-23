@@ -21,6 +21,7 @@
 [submodule "formulas/packages-formula"]
 	path = formulas/packages-formula
 	url = git@github.com:kiniou/packages-formula.git
+	branch = master
 [submodule "formulas/debootstrap-formula"]
 	path = formulas/debootstrap-formula
 	url = git@github.com:kiniou/debootstrap-formula.git
