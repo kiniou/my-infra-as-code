@@ -39,3 +39,7 @@ base:
   'debootstrap:*':
     - match: pillar
     - debootstrap
+
+  'systemd-sleep:*':
+    - match: pillar
+    - systemd-sleep

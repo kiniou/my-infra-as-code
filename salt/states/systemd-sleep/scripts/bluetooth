@@ -1,0 +1,8 @@
+#!/bin/sh
+# Makes sure bluetooth service is not running while suspended.
+
+case "$1" in
+    pre) systemctl stop bluetooth; exit 0;;
+    post) systemctl start bluetooth; exit 0;;
+    *) exit 1;;
+esac
