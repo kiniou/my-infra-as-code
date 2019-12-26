@@ -5,3 +5,6 @@ salt:
 roles:
   - desktop
   - dev
+
+systemd-sleep:
+  - bluetooth
