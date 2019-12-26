@@ -1,8 +1,18 @@
 #!/bin/sh
 # Makes sure bluetooth service is not running while suspended.
-
+BT_STATE_PATH=/var/tmp/bluetooth-rfkill-before-suspend
 case "$1" in
-    pre) systemctl stop bluetooth; exit 0;;
-    post) systemctl start bluetooth; exit 0;;
+    pre)
+        rfkill \
+            --output SOFT --noheadings list bluetooth \
+            | head -n1 > ${BT_STATE_PATH}
+        rfkill block bluetooth
+        exit 0;;
+    post)
+        [ -e ${BT_STATE_PATH} ] \
+            && [ "$(cat ${BT_STATE_PATH})" = "unblocked" ] \
+            && rfkill unblock bluetooth
+        [ -e ${BT_STATE_PATH} ] && rm ${BT_STATE_PATH}
+        exit 0;;
     *) exit 1;;
 esac
