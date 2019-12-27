@@ -10,7 +10,7 @@ import logging
 logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-BT_STATE_PATH=Path("/var/tmp/bluetooth-rfkill-before-suspend")
+BT_STATE_PATH = Path("/var/tmp/bluetooth-rfkill-before-suspend")
 
 
 def block_bluetooth():
@@ -25,11 +25,12 @@ def unblock_bluetooth():
 
 def get_bluetooth_state():
     logger.info("Fetch bluetooth rfkill soft state")
-    result = sp.run(['/usr/sbin/rfkill','--noheadings',
+    result = sp.run(['/usr/sbin/rfkill', '--noheadings',
                      '--output', 'SOFT',
                      'list', 'bluetooth'], check=True, stdout=sp.PIPE)
     bluetooth_state = result.stdout.decode().splitlines()[0]
     return bluetooth_state
+
 
 def get_saved_bluetooth_state():
     state = "blocked"
@@ -37,6 +38,7 @@ def get_saved_bluetooth_state():
         with BT_STATE_PATH.open() as state_fd:
             state = state_fd.read().strip()
     return state
+
 
 def save_bluetooth_state():
     with BT_STATE_PATH.open('w') as state_fd:
