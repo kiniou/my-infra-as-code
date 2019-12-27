@@ -1,18 +1,68 @@
-#!/bin/sh
-# Makes sure bluetooth service is not running while suspended.
-BT_STATE_PATH=/var/tmp/bluetooth-rfkill-before-suspend
-case "$1" in
-    pre)
-        rfkill \
-            --output SOFT --noheadings list bluetooth \
-            | head -n1 > ${BT_STATE_PATH}
-        rfkill block bluetooth
-        exit 0;;
-    post)
-        [ -e ${BT_STATE_PATH} ] \
-            && [ "$(cat ${BT_STATE_PATH})" = "unblocked" ] \
-            && rfkill unblock bluetooth
-        [ -e ${BT_STATE_PATH} ] && rm ${BT_STATE_PATH}
-        exit 0;;
-    *) exit 1;;
-esac
+#!/usr/bin/python3
+"""
+    Makes sure bluetooth service is not running while suspended.
+"""
+import sys
+import subprocess as sp
+from pathlib import Path
+import logging
+
+logging.basicConfig()
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+BT_STATE_PATH=Path("/var/tmp/bluetooth-rfkill-before-suspend")
+
+
+def block_bluetooth():
+    logger.info("Blocking bluetooth")
+    sp.run(['/usr/sbin/rfkill', 'block', 'bluetooth'], check=True)
+
+
+def unblock_bluetooth():
+    logger.info("Unblocking bluetooth")
+    sp.run(['/usr/sbin/rfkill', 'unblock', 'bluetooth'], check=True)
+
+
+def get_bluetooth_state():
+    logger.info("Fetch bluetooth rfkill soft state")
+    result = sp.run(['/usr/sbin/rfkill','--noheadings',
+                     '--output', 'SOFT',
+                     'list', 'bluetooth'], check=True, stdout=sp.PIPE)
+    bluetooth_state = result.stdout.decode().splitlines()[0]
+    return bluetooth_state
+
+def get_saved_bluetooth_state():
+    state = "blocked"
+    if BT_STATE_PATH.exists():
+        with BT_STATE_PATH.open() as state_fd:
+            state = state_fd.read().strip()
+    return state
+
+def save_bluetooth_state():
+    with BT_STATE_PATH.open('w') as state_fd:
+        state_fd.write(get_bluetooth_state())
+
+
+def maybe_restore_bluetooth_state():
+    state = get_saved_bluetooth_state()
+    if state == "unblocked":
+        unblock_bluetooth()
+
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        logger.error("Needs more arguments!!")
+        sys.exit(1)
+    action = sys.argv[1]
+    if action == "pre":
+        save_bluetooth_state()
+        block_bluetooth()
+    elif action == "post":
+        maybe_restore_bluetooth_state()
+    elif action == "debug":
+        logger.info("Bluetooth state: %s", get_bluetooth_state())
+        save_bluetooth_state()
+        logger.info("Bluetooth saved state: %s", get_saved_bluetooth_state())
+    else:
+        sys.exit(1)
+    sys.exit(0)
