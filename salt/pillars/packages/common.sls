@@ -14,4 +14,6 @@ packages:
       - python3-pip
       - parted
       - procps
-
+      - keychain
+      - openssh-server
+      - openssh-client

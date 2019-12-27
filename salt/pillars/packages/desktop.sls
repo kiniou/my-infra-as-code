@@ -8,3 +8,4 @@ packages:
       - ofono
       - ofono-phonesim
       - ofono-scripts
+      - ksshaskpass
