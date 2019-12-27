@@ -10,11 +10,14 @@ debootstrap:
       repositories:
         default: http://archive.ubuntu.com/ubuntu
 
+sbuild:
+  basedir: /var/lib/schroot
   chroots:
-    sid-amd64:
+    sid:
       vendor: debian
       dist: sid
-      arch: amd64
+      architectures:
+        - amd64
       components:
         - main
         - contrib
@@ -22,29 +25,32 @@ debootstrap:
       extra_dists:
         - experimental
 
-    buster-amd64:
+    buster:
       vendor: debian
       dist: buster
-      arch: amd64
+      architectures:
+        - amd64
       components:
         - main
         - contrib
         - non-free
 
-    disco-amd64:
+    disco:
       vendor: ubuntu
       dist: disco
-      arch: amd64
+      architectures:
+        - amd64
       components:
         - main
         - restricted
         - universe
         - multiverse
 
-    eoan-amd64:
+    eoan:
       vendor: ubuntu
       dist: eoan
-      arch: amd64
+      architectures:
+        - amd64
       components:
         - main
         - restricted

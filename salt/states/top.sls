@@ -36,7 +36,7 @@ base:
     - match: pillar
     - firewalld
 
-  'debootstrap:*':
+  'sbuild:*':
     - match: pillar
     - debootstrap
 

@@ -30,3 +30,11 @@
 	path = formulas/sbp-formula
 	url = git@github.com:kiniou/sbp-formula.git
 	branch = feat/formula-basics
+[submodule "formulas/sbuild-formula"]
+	path = formulas/sbuild-formula
+	url = git@github.com:kiniou/sbuild-formula.git
+	branch = master
+[submodule "formulas/schroot-formula"]
+	path = formulas/schroot-formula
+	url = git@github.com:kiniou/schroot-formula.git
+	branch = master
