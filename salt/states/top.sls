@@ -38,7 +38,7 @@ base:
 
   'sbuild:*':
     - match: pillar
-    - debootstrap
+    - sbuild
 
   'systemd-sleep:*':
     - match: pillar
