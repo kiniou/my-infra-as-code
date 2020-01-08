@@ -6,6 +6,5 @@ packages:
       - polkit-kde-agent-1
       - sddm
       - ofono
-      - ofono-phonesim
       - ofono-scripts
       - ksshaskpass
