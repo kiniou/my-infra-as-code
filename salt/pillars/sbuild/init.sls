@@ -25,6 +25,16 @@ sbuild:
       extra_dists:
         - experimental
 
+    stretch:
+      vendor: debian
+      dist: stretch
+      architectures:
+        - amd64
+      components:
+        - main
+        - contrib
+        - non-free
+
     buster:
       vendor: debian
       dist: buster
