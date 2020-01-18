@@ -1,4 +1,5 @@
 import re
+import os.path
 
 ip_matcher = re.compile(r'^(?P<ip_address>\d+\.\d+\.\d+\.\d+)')
 
@@ -15,6 +16,9 @@ def inform_super(_id, qstate, superqstate, qdata):
 
 def get_ip(qstate):
     ip_address = None
+    if not os.path.exists('/tmp/hosts.vagrant'):
+        return ip_address
+
     with open('/tmp/hosts.vagrant', 'r') as f:
         data = [line.rstrip() for line in f.readlines()]
     entries = [entry for entry in data if qstate.qinfo.qname_str == entry.split()[1]]
