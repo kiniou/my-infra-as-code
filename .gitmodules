@@ -38,3 +38,15 @@
 	path = formulas/schroot-formula
 	url = git@github.com:kiniou/schroot-formula.git
 	branch = master
+[submodule "formulas/fail2ban-formula"]
+	path = formulas/fail2ban-formula
+	url = git@github.com:kiniou/fail2ban-formula.git
+	branch = master
+[submodule "formulas/apache-formula"]
+	path = formulas/apache-formula
+	url = git@github.com:kiniou/apache-formula.git
+	branch = master
+[submodule "formulas/letsencrypt-formula"]
+	path = formulas/letsencrypt-formula
+	url = git@github.com:kiniou/letsencrypt-formula.git
+	branch = master
