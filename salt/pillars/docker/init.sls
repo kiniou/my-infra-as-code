@@ -13,4 +13,4 @@ docker:
     init: true
     live-restore: true
 
-  compose_version: '1.25.0'
+  compose_version: '1.25.2'
