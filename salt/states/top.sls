@@ -43,3 +43,16 @@ base:
   'systemd-sleep:*':
     - match: pillar
     - systemd-sleep
+
+  'apache:*':
+    - match: pillar
+    - apache
+    - apache.config
+
+  'letsencrypt:*':
+    - match: pillar
+    - letsencrypt
+
+  'fail2ban:*':
+    - match: pillar
+    - fail2ban
