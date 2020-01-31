@@ -3,7 +3,7 @@ unbound:
   configs:
     00_main: |
       server:
-        verbosity: 4
+        verbosity: 1
         domain-insecure: "vagrant"
         domain-insecure: "test"
       remote-control:
