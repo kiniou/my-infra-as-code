@@ -9,10 +9,12 @@ base:
 
   'not I@salt:minion:standalone':
     - match: compound
+    - salt.pkgrepo
     - salt.minion
 
   'I@salt:minion:standalone':
     - match: compound
+    - salt.pkgrepo
     - salt.standalone
 
   'unbound:*':
