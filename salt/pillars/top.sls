@@ -11,5 +11,5 @@ base:
     - packages.dev
     - sbuild
     - unbound
-    - docker
+    - docker.ce
     - vagrant
