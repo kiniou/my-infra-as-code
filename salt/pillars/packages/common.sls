@@ -42,6 +42,8 @@ packages:
       - openssh-server
       - openssl
       - parted
+      - pinentry-curses
+      - powertop
       - procps
       - pv
       - pwgen

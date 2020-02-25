@@ -19,6 +19,7 @@ packages:
       - ksshaskpass
       - ofono
       - ofono-scripts
+      - plasma-desktop
       - polkit-kde-agent-1
       - pulseaudio-utils
       - sddm
