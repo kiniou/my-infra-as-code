@@ -26,6 +26,12 @@ base:
     - docker
     - docker.compose
 
+  'traefik:*':
+    - match: pillar
+    - docker
+    - docker.compose
+    - traefik
+
   'vagrant:*':
     - match: pillar
     - vagrant
