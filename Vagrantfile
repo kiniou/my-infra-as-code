@@ -1,10 +1,14 @@
-require 'logger'
-
-log = Logger.new(STDOUT)
 require 'yaml'
+require 'pp'
+
+def debug(obj)
+  if ENV.fetch("DEBUG", false)
+    pp(obj)
+  end
+end
 
 vms = YAML.load_file(File.join(File.dirname(__FILE__), 'vms.yml'))
-log.debug(vms)
+debug(vms)
 
 def configure_node_vm(node, data)
   synced_volumes = {
@@ -88,13 +92,13 @@ Vagrant.configure("2") do |config|
       node.vm.hostname = name
       configure_node_vm(node, data)
       data.fetch('disks', []).each_with_index do |disk,idx|
-        log.debug("Disk %s : %s" % [idx, disk])
+        debug("Disk %s : %s" % [idx, disk])
         configure_node_disk(node, idx, name, *disk)
       end
       provision = data.fetch('provision', [])
-      log.debug(provision)
+      debug(provision)
       provision.each do |provision_type, provision_data|
-        log.debug("provision '%s' : '%s'" % [provision_type, provision_data])
+        debug("provision '%s' : '%s'" % [provision_type, provision_data])
         if provision_type == 'salt'
           configure_salt_provision(node, provision_data, vms)
         elsif provision_type == 'shell'
