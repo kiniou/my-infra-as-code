@@ -7,7 +7,34 @@ def debug(obj)
   end
 end
 
+def warn(obj)
+  if ENV.fetch("DEBUG", false)
+    puts obj
+  end
+end
+# Hashes recursive merge enhancement
+class ::Hash
+  def rmerge!(other_hash)
+    merge!(other_hash) do |key, oldval, newval|
+      oldval.class == self.class ? oldval.rmerge!(newval) : newval
+    end
+  end
+
+  def rmerge(second)
+    r = {}
+    merge(second) do |key, oldval, newval|
+      r[key] = oldval.class == self.class ? oldval.rmerge(newval) : newval
+    end
+  end
+end
+
 vms = YAML.load_file(File.join(File.dirname(__FILE__), 'vms.yml'))
+begin
+  vms_custom = YAML.load_file(File.join(File.dirname(__FILE__), 'vms.override.yml'))
+  vms = vms.rmerge(vms_custom)
+rescue Exception => e
+  warn("WARNING: %s" % e)
+end
 debug(vms)
 
 def configure_node_vm(node, data)
