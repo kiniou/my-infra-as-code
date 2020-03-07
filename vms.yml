@@ -1,5 +1,5 @@
 test:
-  box: "debian/contrib-buster64"
+  box: "kiniou/buster64"
   cpus: 1
   memory: 2048
   disks:

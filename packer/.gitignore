@@ -1,0 +1,5 @@
+*.build
+*.box
+*.metadata.json
+packer_cache
+builds
