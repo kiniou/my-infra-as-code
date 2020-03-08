@@ -3,7 +3,6 @@ packages:
     wanted:
       - ark
       - bambam
-      - bluez-btsco
       - bluez-hcidump
       - brightnessctl
       - dunst
