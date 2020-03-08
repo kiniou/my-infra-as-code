@@ -2,8 +2,8 @@ traefik:
   network:
     name: traefik
   ports:
-    http: 8000
-    https: 8443
+    http: 80
+    https: 443
     dashboard: 8080
     pebble: 14000
     pebble_mgmt: 15000
