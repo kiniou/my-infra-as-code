@@ -1,4 +1,8 @@
 {% from "traefik/map.jinja" import traefik with context %}
+include:
+  - docker
+  - docker.compose
+
 traefik-etc:
   file.recurse:
     - name: /etc/traefik

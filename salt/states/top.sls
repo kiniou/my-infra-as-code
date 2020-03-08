@@ -28,8 +28,6 @@ base:
 
   'features:traefik':
     - match: pillar
-    - docker
-    - docker.compose
     - traefik
 
   'features:vagrant':
