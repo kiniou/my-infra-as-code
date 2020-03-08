@@ -28,6 +28,7 @@ packages:
       - htop
       - httping
       - inetutils-ping
+      - inxi
       - iotop
       - iproute2
       - iproute2-doc
