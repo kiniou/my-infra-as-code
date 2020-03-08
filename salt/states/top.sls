@@ -17,7 +17,7 @@ base:
     - salt.pkgrepo
     - salt.standalone
 
-  'unbound:*':
+  'features:unbound':
     - match: pillar
     - unbound
 
@@ -26,13 +26,13 @@ base:
     - docker
     - docker.compose
 
-  'traefik:*':
+  'features:traefik':
     - match: pillar
     - docker
     - docker.compose
     - traefik
 
-  'vagrant:*':
+  'features:vagrant':
     - match: pillar
     - vagrant
 

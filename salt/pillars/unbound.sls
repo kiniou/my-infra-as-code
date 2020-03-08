@@ -1,3 +1,6 @@
+features:
+  - unbound
+
 unbound:
   enabled: True
   configs:

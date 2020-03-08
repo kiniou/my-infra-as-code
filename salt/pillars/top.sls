@@ -13,3 +13,4 @@ base:
     - unbound
     - docker.ce
     - vagrant
+    - traefik

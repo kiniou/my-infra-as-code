@@ -1,0 +1,2 @@
+features:
+  - traefik
