@@ -10,7 +10,6 @@ packages:
       - aptitude
       - atop
       - auditd
-      - bluez-hcidump
       - bridge-utils
       - btrfs-progs
       - bzip2

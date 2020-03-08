@@ -4,6 +4,7 @@ packages:
       - ark
       - bambam
       - bluez-btsco
+      - bluez-hcidump
       - brightnessctl
       - dunst
       - feh
