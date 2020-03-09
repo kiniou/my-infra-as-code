@@ -6,18 +6,18 @@ file_client: local
 file_roots:
   base:
     - ./salt/states
-    - ./extra/
+    - ./salt/extra/
 pillar_roots:
   base:
     - ./salt/pillars
 
 ext_pillar_first: True
 ext_pillar:
-  - stack: ./topology/top.cfg
+  - stack: ./salt/topology/top.cfg
   # - cmd_yaml: "cat /srv/private/*.yml || echo ''"
 
 top_file_merging_strategy: same
 
 default_top: base
 
-pillar_merge_lists: 'True'
+pillar_merge_lists: True
