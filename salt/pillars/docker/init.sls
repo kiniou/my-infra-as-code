@@ -11,6 +11,5 @@ docker:
 
   daemon_config:
     init: true
-    live-restore: true
 
   compose_version: '1.25.2'
