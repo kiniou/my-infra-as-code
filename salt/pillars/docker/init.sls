@@ -12,4 +12,4 @@ docker:
   daemon_config:
     init: true
 
-  compose_version: '1.25.2'
+  compose_version: '1.25.4'
