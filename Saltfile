@@ -1,4 +1,4 @@
 salt-call:
   local: True
   config_dir: etc
-
+  state_output: changes
