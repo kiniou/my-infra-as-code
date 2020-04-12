@@ -39,4 +39,5 @@ traefik.service:
     - require:
         - traefik-service-install
     - watch:
+        - traefik-etc
         - traefik-env
