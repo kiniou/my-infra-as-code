@@ -44,7 +44,8 @@ base:
 
   'sbuild:*':
     - match: pillar
-    - sbuild
+    # sbuild is quite long to state.apply so it needs to be called manually
+    - sbuild.prereq
 
   'systemd-sleep:*':
     - match: pillar

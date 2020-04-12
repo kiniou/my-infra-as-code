@@ -18,6 +18,7 @@ sbuild:
       dist: sid
       architectures:
         - amd64
+        - i386
       components:
         - main
         - contrib
@@ -40,6 +41,7 @@ sbuild:
       dist: buster
       architectures:
         - amd64
+        - i386
       components:
         - main
         - contrib
@@ -61,6 +63,7 @@ sbuild:
       dist: eoan
       architectures:
         - amd64
+        - i386
       components:
         - main
         - restricted
