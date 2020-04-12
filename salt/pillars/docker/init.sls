@@ -3,12 +3,6 @@ docker:
   install_docker_py: true
   use_upstream_repo: false
 
-  pkgs:
-    - containerd
-  pkg:
-    name: docker.io
-    allow_updates: true
-
   daemon_config:
     init: true
 
