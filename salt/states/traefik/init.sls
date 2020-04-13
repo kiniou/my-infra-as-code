@@ -2,6 +2,7 @@
 include:
   - docker
   - docker.compose
+  - traefik.certs
 
 traefik-etc:
   file.recurse:
@@ -16,6 +17,7 @@ traefik-env:
     - name: /etc/traefik/.env
     - template: jinja
     - contents: |
+        COMPOSE_FILE=docker-compose.yml
         NETWORK_NAME={{ traefik.network.name }}
         TRAEFIK_PORT_HTTP={{ traefik.ports.http }}
         TRAEFIK_PORT_HTTPS={{ traefik.ports.https }}
@@ -41,3 +43,4 @@ traefik.service:
     - watch:
         - traefik-etc
         - traefik-env
+        - traefik-certs

@@ -30,3 +30,4 @@ packages:
   golang:
     goget:
       - github.com/jsha/minica
+      - github.com/FiloSottile/mkcert
