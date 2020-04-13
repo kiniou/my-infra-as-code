@@ -1,2 +1,8 @@
 salt:
   minion: {}
+
+# Add Golang environment variable to define path installations
+environment:
+  - GOPATH=/opt/go
+  - GOBIN=/usr/local/bin
+

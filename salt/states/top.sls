@@ -1,4 +1,7 @@
 base:
+  '*':
+    - common.env
+
   'packages:*':
     - match: pillar
     - packages
