@@ -2,5 +2,5 @@ roles:
   - salt-minion
 
 salt:
-  release: '2019.2.3'
+  release: '3000.1'
   install_packages: true
