@@ -7,8 +7,6 @@ docker:
   repo:
     version: disco
 
-  pkgs:
-    - containerd
   pkg:
     name: docker-ce
     allow_updates: true
