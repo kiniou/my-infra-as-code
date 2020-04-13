@@ -14,6 +14,7 @@ pillar_roots:
 ext_pillar_first: True
 ext_pillar:
   - stack: ./salt/topology/top.cfg
+  - stack: ./salt/topology/fixup.cfg
   # - cmd_yaml: "cat /srv/private/*.yml || echo ''"
 
 top_file_merging_strategy: same
