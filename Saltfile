@@ -1,4 +1,5 @@
 salt-call:
+  log_level: debug
   local: True
   config_dir: etc
   state_output: changes
