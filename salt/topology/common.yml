@@ -2,5 +2,5 @@ roles:
   - salt-minion
 
 salt:
-  release: '3000.1'
+  release: '3000'
   install_packages: true
