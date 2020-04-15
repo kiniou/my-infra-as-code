@@ -1,6 +1,8 @@
 base:
   '*':
     - common.env
+    - common.repo
+    - common.pkgs
 
   'packages:*':
     - match: pillar
