@@ -50,3 +50,6 @@
 	path = formulas/letsencrypt-formula
 	url = git@github.com:kiniou/letsencrypt-formula.git
 	branch = master
+[submodule "formulas/chrome-formula"]
+	path = formulas/chrome-formula
+	url = git@github.com:kiniou/chrome-formula.git

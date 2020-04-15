@@ -66,3 +66,7 @@ base:
   'fail2ban:*':
     - match: pillar
     - fail2ban
+
+  'features:google-chrome':
+    - match: pillar
+    - chrome
