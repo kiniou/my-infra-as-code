@@ -14,6 +14,7 @@ packages:
       - btrfs-progs
       - bzip2
       - ca-certificates
+      - curl
       - fio
       - firewalld
       - fwupd
@@ -38,6 +39,7 @@ packages:
       - lftp
       - moreutils
       - mosh
+      - netcat-openbsd
       - openssh-client
       - openssh-server
       - openssl

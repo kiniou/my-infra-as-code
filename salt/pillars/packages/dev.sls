@@ -21,12 +21,9 @@ packages:
       - kdiff3
       - live-build
       - mercurial
-      - packer
       - quilt
       - shellcheck
       - tig
-      - vagrant
-      - virtualbox #sob...
   golang:
     goget:
       - github.com/jsha/minica

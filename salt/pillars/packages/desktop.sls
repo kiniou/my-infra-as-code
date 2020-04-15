@@ -9,16 +9,12 @@ packages:
       - feh
       - ffmpeg
       - filezilla
-      - firefox
-      - firefox-locale-en
       - fonts-dejavu-core
       - fonts-f500
       - fonts-noto
       - fonts-symbola
       - konsole
       - ksshaskpass
-      - ofono
-      - ofono-scripts
       - plasma-desktop
       - polkit-kde-agent-1
       - pulseaudio-utils
@@ -42,3 +38,8 @@ packages:
       - xserver-xorg-input-evdev
       - xserver-xorg-input-kbd
       - xserver-xorg-input-mouse
+      {% if grains['os'] == 'Ubuntu' %}
+      - firefox
+      {% elif grains['os'] == 'Debian' %}
+      - firefox-esr
+      {% endif %}
