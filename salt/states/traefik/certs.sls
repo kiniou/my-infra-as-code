@@ -1,6 +1,7 @@
 {% from "traefik/map.jinja" import traefik with context %}
 
 {% set traefik_certs_dir = "/etc/traefik/certs" %}
+{% set traefik_certs_subjects = traefik.certs | map('quote') | join(' ') %}
 {{ traefik_certs_dir }}:
   file.directory:
     - makedirs: True
@@ -14,7 +15,7 @@ traefik-certs:
         mkcert \
           -cert-file {{ traefik_certs_dir }}/localhost.crt \
           -key-file  {{ traefik_certs_dir }}/localhost.key \
-          localhost "*.localhost" d.test "*.d.test" 127.0.0.1 ::1
+          {{ traefik_certs_subjects }}
     - creates:
         - {{ traefik_certs_dir }}/localhost.crt
         - {{ traefik_certs_dir }}/localhost.key
