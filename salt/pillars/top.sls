@@ -1,5 +1,6 @@
 base:
   '*':
+    - common
     - packages.common
 
   'roles:desktop':
