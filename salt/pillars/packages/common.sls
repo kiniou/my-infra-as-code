@@ -59,3 +59,5 @@ packages:
       - xz-utils
       - zip
       - zsh
+  retry_options:
+      attempts: 0
