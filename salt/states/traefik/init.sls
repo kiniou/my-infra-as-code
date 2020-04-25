@@ -17,7 +17,7 @@ traefik-env:
     - name: /etc/traefik/.env
     - template: jinja
     - contents: |
-        COMPOSE_FILE=docker-compose.yml
+        COMPOSE_FILE={{ traefik.compose_files | join(':') }}
         NETWORK_NAME={{ traefik.network.name }}
         TRAEFIK_PORT_HTTP={{ traefik.ports.http }}
         TRAEFIK_PORT_HTTPS={{ traefik.ports.https }}

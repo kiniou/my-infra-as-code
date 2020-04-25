@@ -7,6 +7,8 @@ traefik:
     dashboard: 8080
     pebble: 14000
     pebble_mgmt: 15000
+  compose_files:
+    - docker-compose.yml
   certs:
     - localhost
     - 127.0.0.1
