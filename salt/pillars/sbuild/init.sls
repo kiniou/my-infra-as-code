@@ -69,3 +69,15 @@ sbuild:
         - restricted
         - universe
         - multiverse
+
+    focal:
+      vendor: ubuntu
+      dist: eoan
+      architectures:
+        - amd64
+        - i386
+      components:
+        - main
+        - restricted
+        - universe
+        - multiverse
