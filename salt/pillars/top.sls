@@ -12,6 +12,6 @@ base:
     - packages.dev
     - sbuild
     - unbound
-    - docker.ce
+    - docker.io
     - vagrant
     - traefik
