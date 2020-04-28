@@ -1,6 +1,3 @@
-features:
-  - vagrant
-
 vagrant:
   plugins:
     vagrant-vbguest:

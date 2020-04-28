@@ -1,0 +1,6 @@
+Debian:
+  extension: deb
+  install_cmd: dpkg -i %s
+
+default:
+  extension: zip

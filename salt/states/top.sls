@@ -39,6 +39,14 @@ base:
     - match: pillar
     - vagrant
 
+  'features:virtualbox':
+    - match: pillar
+    - virtualbox
+
+  'features:packer':
+    - match: pillar
+    - packer
+
   'nginx:*':
     - match: pillar
     - nginx

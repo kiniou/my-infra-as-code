@@ -1,0 +1,21 @@
+{%- set tplroot = tpldir.split('/')[0] %}
+{% import_yaml tplroot ~ "/defaults.yml" as default_settings %}
+
+{% set defaults = salt['grains.filter_by'](
+  default_settings,
+  default='virtualbox') %}
+
+{% do salt.slsutil.update(
+  defaults,
+  {"dist": grains["oscodename"]},
+  merge_lists=true
+)
+%}
+
+{% set virtualbox = salt['pillar.get'](
+  'virtualbox',
+  default=defaults,
+  merge=True
+)
+%}
+
