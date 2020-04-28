@@ -25,7 +25,7 @@ packages:
       - mesa-utils
       - mesa-utils-extra
       - mpv
-      - qdbus
+      - qdbus-qt5
       - suckless-tools
       - timewarrior
       - vulkan-tools
