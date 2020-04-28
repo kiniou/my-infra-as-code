@@ -13,7 +13,7 @@ traefik-certs:
         - test -f {{ traefik_certs_dir }}/localhost.crt
         - test -f {{ traefik_certs_dir }}/localhost.key
         {% for dns in traefik.certs %}
-        - openssl x509 -in {{ traefik_certs_dir }}/localhost.crt -text | grep -woF "DNS:{{dns}}"
+        - openssl x509 -in {{ traefik_certs_dir }}/localhost.crt -text | grep -woE "(IP Address|DNS):{{ dns | regex_replace('([.*])', '\\\\\\1') }}"
         {% endfor %}
     - env:
         - CAROOT: {{ traefik_certs_dir }}
