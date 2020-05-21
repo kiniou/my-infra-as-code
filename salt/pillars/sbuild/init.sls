@@ -72,7 +72,7 @@ sbuild:
 
     focal:
       vendor: ubuntu
-      dist: eoan
+      dist: focal
       architectures:
         - amd64
         - i386
