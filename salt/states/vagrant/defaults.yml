@@ -1,4 +1,4 @@
 vagrant:
   arch: x86_64
-  version: 2.2.7
+  version: 2.2.9
   cachedir: /var/cache/vagrant
