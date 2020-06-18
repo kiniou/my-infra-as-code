@@ -31,7 +31,7 @@ packer-download:
 packer-install:
   cmd.run:
     - name: |
-        unzip {{ packer.pkgfile }} packer -d /usr/local/bin
+        unzip -o {{ packer.pkgfile }} packer -d /usr/local/bin
     - cwd: {{ packer.cachedir }}
     - require:
         - id: packer-download
