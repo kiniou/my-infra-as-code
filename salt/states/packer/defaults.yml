@@ -1,4 +1,4 @@
 packer:
-  version: 1.5.5
+  version: 1.6.0
   arch: amd64
   cachedir: /var/cache/packer
