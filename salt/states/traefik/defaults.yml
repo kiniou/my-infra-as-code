@@ -1,14 +1,20 @@
 traefik:
   network:
     name: traefik
+    gateway: 172.19.0.1 # TODO: needs to put this in some specific docker pillar
+    subnet: 172.19.0.0/16 # TODO: needs to put this in some specific docker pillar
+  consul:
+    encrypt: ''
   ports:
     http: 80
     https: 443
+    ssh: 8022
     dashboard: 8080
     pebble: 14000
     pebble_mgmt: 15000
   compose_files:
     - docker-compose.yml
+    - docker-compose.consul.yml
   certs:
     - localhost
     - 127.0.0.1

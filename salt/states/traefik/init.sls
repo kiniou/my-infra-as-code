@@ -22,8 +22,11 @@ traefik-env:
         TRAEFIK_PORT_HTTP={{ traefik.ports.http }}
         TRAEFIK_PORT_HTTPS={{ traefik.ports.https }}
         TRAEFIK_PORT_DASHBOARD={{ traefik.ports.dashboard }}
+        TRAEFIK_PORT_SSH={{ traefik.ports.ssh }}
         PEBBLE_PORT={{ traefik.ports.pebble }}
         PEBBLE_MGMT_PORT={{ traefik.ports.pebble_mgmt }}
+        CONSUL_ADVERTISE_IP={{ traefik.network.gateway }}
+        CONSUL_ENCRYPT={{ traefik.consul.encrypt }}
     - require:
         - traefik-etc
 
