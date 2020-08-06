@@ -12,14 +12,29 @@ echo "Activating systemd-resolved"
 # This service is usefull to resolve the special gateway hostname in order to
 # use services on the host
 apt-get install -y libnss-resolve
+mkdir -p /etc/systemd/resolved.conf.d
+cat <<EOF> /etc/systemd/resolved.conf.d/custom.conf
+[Resolve]
+# Use LLMNR to discover neighborhood
+LLMNR=yes
+# Only make systemd-resolve dns stub (127.0.0.53) listen on udp
+DNSStubListener=udp
+EOF
 systemctl enable --now systemd-resolved
+ln -nsf /lib/systemd/resolv.conf /etc/resolv.conf
 
-cat <<EOF> /etc/systemd/network/ethX.network
+cat <<EOF> /etc/systemd/network/00-ethX.network
 [Match]
 Name=eth*
 
 [Network]
 DHCP=yes
+
+# disable link local 169.* addresses (this adds another resolution with LLMNR)
+LinkLocalAddressing=no
+
+# don't accept ipv6 router advertisement
+IPv6AcceptRA=no
 EOF
 systemctl enable systemd-networkd
 
