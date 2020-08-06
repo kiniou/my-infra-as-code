@@ -19,3 +19,4 @@ base:
   'roles:server':
     - match: pillar
     - firewalld
+    - fail2ban

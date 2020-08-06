@@ -51,6 +51,11 @@ base:
     - match: pillar
     - firewalld
 
+  'fail2ban:*':
+    - match: pillar
+    - fail2ban
+
+
   'sbuild:*':
     - match: pillar
     # sbuild is quite long to state.apply so it needs to be called manually
@@ -68,10 +73,6 @@ base:
   'letsencrypt:*':
     - match: pillar
     - letsencrypt
-
-  'fail2ban:*':
-    - match: pillar
-    - fail2ban
 
   'features:google-chrome':
     - match: pillar
