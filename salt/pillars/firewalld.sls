@@ -1,0 +1,39 @@
+firewalld:
+  enabled: true
+  ipset: true
+  default_zone: public
+  IndividualCalls: 'no'
+  LogDenied: 'off'
+  AutomaticHelpers: 'system'
+  FirewallBackend: 'nftables'
+
+  backend:
+    manage: true
+    pkg: nftables
+
+  ipsets:
+    fail2ban-ssh:
+      short: fail2ban-ssh
+      description: fail2ban-ssh ipset
+      type: 'hash:ip'
+      options:
+        maxelem:
+          - 65536
+        timeout:
+          - 86400
+        hashsize:
+          - 1024
+  zones:
+    public:
+      short: Public
+      description: "For use in public areas. You do not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted."
+      services:
+        - http
+        - https
+        - ssh
+      rich_rules:
+        - family: ipv4
+          ipset:
+            name: fail2ban-ssh
+          reject:
+            type: icmp-port-unreachable

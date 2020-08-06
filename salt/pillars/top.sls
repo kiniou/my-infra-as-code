@@ -15,3 +15,7 @@ base:
     - docker.io
     - vagrant
     - traefik
+
+  'roles:server':
+    - match: pillar
+    - firewalld

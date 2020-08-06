@@ -4,6 +4,11 @@ base:
     - common.repo
     - common.pkgs
 
+  'apt:preferences:*':
+    - match: pillar
+    - apt.preferences
+    - common.uptodate
+
   'packages:*':
     - match: pillar
     - packages

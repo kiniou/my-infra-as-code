@@ -4,3 +4,19 @@ salt:
   pkgrepo: 'deb [arch=amd64] http://repo.saltstack.com/py3/debian/10/amd64/{{ release }} buster main'
   key_url: 'https://repo.saltstack.com/py3/debian/10/amd64/{{ release }}/SALTSTACK-GPG-KEY.pub'
 {% endif %}
+
+apt:
+  preferences:
+    00-buster-backports-iptables:
+      package: iptables libip4tc2 libip6tc2 libiptc0 libxtables12 libnftnl11
+      pin: release a=buster-backports
+      priority: 900
+    00-buster-backports-nftables:
+      package: nftables libnftables1
+      pin: release a=buster-backports
+      priority: 900
+
+uptodate:
+  pkgs:
+    - iptables
+    - nftables

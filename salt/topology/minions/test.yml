@@ -1,6 +1,7 @@
 roles:
   - desktop
   - dev
+  - server
 
 salt:
   minion:
