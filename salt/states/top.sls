@@ -1,5 +1,6 @@
 base:
   '*':
+    - salt
     - common.env
     - common.repo
     - common.pkgs
@@ -16,16 +17,6 @@ base:
   'packages:golang:*':
     - match: pillar
     - packages.golang
-
-  'not I@salt:minion:standalone':
-    - match: compound
-    - salt.pkgrepo
-    - salt.minion
-
-  'I@salt:minion:standalone':
-    - match: compound
-    - salt.pkgrepo
-    - salt.standalone
 
   'features:unbound':
     - match: pillar

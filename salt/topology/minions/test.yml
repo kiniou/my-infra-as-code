@@ -5,4 +5,22 @@ roles:
 
 salt:
   minion:
-    standalone: true
+    standalone: True
+    master_type: 'disable'
+    file_client: local
+    file_roots:
+      base:
+        - /vagrant/salt/states
+    pillar_roots:
+      base:
+        - /vagrant/salt/pillars
+    ext_pillar_first: True
+    ext_pillar:
+      - stack: /vagrant/salt/topology/top.cfg
+      - stack: /vagrant/salt/topology/fixup.cfg
+
+    top_file_merging_strategy: same
+
+    default_top: base
+
+    pillar_merge_lists: True
