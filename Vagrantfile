@@ -68,7 +68,7 @@ def configure_node_vm(node, data)
                    "--hostiocache", "on" ]
     vb.cpus = data.fetch("cpus", cpus)
     vb.memory = data.fetch("memory", memory)
-    override.vm.network "private_network", :type => 'dhcp', :ip => "10.42.0.1"
+    override.vm.network "private_network", :type => 'dhcp', :ip => "10.43.0.1", :autoconfig => false
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
     vb.customize ['modifyvm', :id, '--natdnshostresolver2', 'off']
     vb.customize ['modifyvm',  :id,  '--natdnsproxy1', 'on']
@@ -102,10 +102,9 @@ def configure_salt_provision(node, salt_options, vms)
     if salt.install_type == "git"
       salt.install_args = salt_options.fetch('install_args', salt.version)
     else
-      salt.version = salt_options.fetch('version', '2019.2.3')
+      salt.version = salt_options.fetch('version', '3001')
     end
     salt.install_master = salt_options.fetch('install_master', false)
-    salt.bootstrap_options = "-D -x python3.7"
   end
 end
 

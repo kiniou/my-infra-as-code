@@ -6,8 +6,8 @@ test:
     data: 10
   synced_volumes:
     - '.': '/vagrant'
-  provision: !!omap
+  provision:
     salt:
-      install_type: -x python3 stable
+      version: 3001
       install_master: false
     shell: sh /vagrant/scripts/provision.sh
