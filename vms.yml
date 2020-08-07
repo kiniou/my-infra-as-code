@@ -1,13 +1,6 @@
 test:
-  box: "kiniou/buster64"
-  cpus: 1
-  memory: 2048
   disks:
     data: 10
-  synced_volumes:
-    - '.': '/vagrant'
   provision:
-    salt:
-      version: 3001
-      install_master: false
+    salt: {}
     shell: sh /vagrant/scripts/provision.sh

@@ -39,8 +39,8 @@ debug(vms)
 
 def configure_node_vm(node, data)
   synced_volumes = {
-    '.' => '/vagrant',
-  }
+    '/vagrant' => '.',
+  }.rmerge(data.fetch('synced_volumes', {}))
 
   # Defaults
   memory = 2048
@@ -53,7 +53,7 @@ def configure_node_vm(node, data)
     lv.cpu_mode = 'host-passthrough'
     lv.graphics_type = 'spice'
     lv.video_type = 'virtio'
-    for src, dest in synced_volumes do
+    synced_volumes.each do |dest, src|
       override.vm.synced_folder src, dest, type: '9p', accessmode: "squash"
     end
   end
@@ -73,7 +73,7 @@ def configure_node_vm(node, data)
     vb.customize ['modifyvm', :id, '--natdnshostresolver2', 'off']
     vb.customize ['modifyvm',  :id,  '--natdnsproxy1', 'on']
     vb.customize ['modifyvm',  :id,  '--natdnsproxy2', 'on']
-    synced_volumes.each do |src,dest|
+    synced_volumes.each do |dest, src|
       override.vm.synced_folder src, dest, type: 'virtualbox', automount: true
     end
   end
@@ -111,7 +111,7 @@ end
 Vagrant.configure("2") do |config|
 
   vms.each do |name, data|
-    config.vm.box = data.fetch('box', "debian/contrib-stretch64")
+    config.vm.box = data.fetch('box', "kiniou/buster64")
     config.vbguest.auto_update = false
     autostart=data.fetch('autostart', false)
     config.vm.define name, autostart: autostart do |node|
