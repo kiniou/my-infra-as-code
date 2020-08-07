@@ -4,3 +4,8 @@ test:
   provision:
     salt: {}
     shell: sh /vagrant/scripts/provision.sh
+
+server:
+  provision:
+    salt: {}
+    shell: sh /vagrant/scripts/provision.sh

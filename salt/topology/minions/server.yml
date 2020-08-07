@@ -1,0 +1,6 @@
+roles:
+  - server
+
+salt:
+  minion:
+    standalone: True
