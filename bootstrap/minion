@@ -1,0 +1,19 @@
+# -*- mode: yaml -*-
+ipv6: True
+interface: '::'
+
+file_client: local
+file_roots:
+  base:
+    - ../salt/states
+
+pillar_roots:
+  base:
+    - ../salt/pillars
+
+ext_pillar_first: True
+ext_pillar:
+  - stack: ../salt/topology/top.cfg
+  - stack: ../salt/topology/fixup.cfg
+
+top_file_merging_strategy: same

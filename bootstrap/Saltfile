@@ -1,3 +1,3 @@
 salt-call:
   local: True
-  config_dir: etc
+  config_dir: .
