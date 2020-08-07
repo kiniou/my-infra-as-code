@@ -6,6 +6,9 @@ salt:
 {% endif %}
 
 apt:
+  remove_sources_list: true
+  clean_sources_list_d: false
+
   preferences:
     00-buster-backports-iptables:
       package: iptables libip4tc2 libip6tc2 libiptc0 libxtables12 libnftnl11
@@ -15,6 +18,20 @@ apt:
       package: nftables libnftables1
       pin: release a=buster-backports
       priority: 900
+
+  repositories:
+    debian-buster:
+      distro: buster
+      url: http://deb.debian.org/debian
+      comps: [main, contrib, non-free]
+    security:
+      distro: buster/updates
+      url: http://security.debian.org/debian-security
+      comps: [main, contrib]
+    buster-backports:
+      distro: buster-backports
+      url: http://deb.debian.org/debian
+      comps: [main, contrib, non-free]
 
 uptodate:
   pkgs:

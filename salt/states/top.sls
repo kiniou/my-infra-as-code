@@ -2,12 +2,17 @@ base:
   '*':
     - salt
     - common.env
-    - common.repo
-    - common.pkgs
+
+  'apt:repositories:*':
+    - match: pillar
+    - apt.repositories
 
   'apt:preferences:*':
     - match: pillar
     - apt.preferences
+
+  'apt:*':
+    - match: pillar
     - common.uptodate
 
   'packages:*':
