@@ -1,9 +1,5 @@
-{% set release = pillar.get('salt', {}).get('release') %}
-{% if release %}
 salt:
-  pkgrepo: 'deb [arch=amd64] http://repo.saltstack.com/py3/debian/10/amd64/{{ release }} buster main'
-  key_url: 'https://repo.saltstack.com/py3/debian/10/amd64/{{ release }}/SALTSTACK-GPG-KEY.pub'
-{% endif %}
+  py_ver: py3
 
 apt:
   remove_sources_list: true
