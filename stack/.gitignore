@@ -1,0 +1,3 @@
+# don't commit private things except stack configuration
+private/*
+!private/.gitkeep

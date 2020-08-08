@@ -1,6 +1,2 @@
 .vagrant
 vms.override.yml
-
-# don't commit private things
-private/*
-!private/stack.cfg
