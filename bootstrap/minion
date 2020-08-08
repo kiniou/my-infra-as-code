@@ -5,15 +5,15 @@ interface: '::'
 file_client: local
 file_roots:
   base:
-    - ../salt/states
+    - ../states
 
 pillar_roots:
   base:
-    - ../salt/pillars
+    - ../pillars
 
 ext_pillar_first: True
 ext_pillar:
-  - stack: ../salt/topology/top.cfg
-  - stack: ../salt/topology/fixup.cfg
+  - stack: ../stack/top.cfg
+  - stack: ../stack/fixup.cfg
 
 top_file_merging_strategy: same

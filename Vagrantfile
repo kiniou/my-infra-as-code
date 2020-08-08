@@ -39,7 +39,7 @@ debug(vms)
 
 def configure_node_vm(node, data)
   synced_volumes = {
-    '/vagrant' => '.',
+    '/srv/salt' => '.',
   }.rmerge(data.fetch('synced_volumes', {}))
 
   # Defaults

@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-FORMULAS_DIR=../../formulas
+FORMULAS_DIR=../formulas
 
 check_symlink () {
     # echo "PWD: $(pwd)"
@@ -30,7 +30,7 @@ check_symlink () {
 
 cd $(dirname $0)
 (
-    cd ../salt/states
+    cd ../states
     for formula_dir in $(find ${FORMULAS_DIR} -maxdepth 1 -mindepth 1 -type d)
     do
         formula=$(basename ${formula_dir})
