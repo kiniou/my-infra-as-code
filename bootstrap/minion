@@ -1,6 +1,4 @@
 # -*- mode: yaml -*-
-ipv6: True
-interface: '::'
 
 file_client: local
 file_roots:
@@ -18,3 +16,7 @@ ext_pillar:
   - stack: ../private/stack.cfg
 
 top_file_merging_strategy: same
+
+default_top: base
+
+pillar_merge_lists: false

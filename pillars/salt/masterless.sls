@@ -19,4 +19,4 @@ salt:
 
     default_top: base
 
-    pillar_merge_lists: True
+    pillar_merge_lists: false
