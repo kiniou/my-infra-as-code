@@ -13,6 +13,7 @@ salt:
     ext_pillar:
       - stack: /srv/salt/stack/top.cfg
       - stack: /srv/salt/stack/fixup.cfg
+      - stack: /srv/salt/private/stack.cfg
 
     top_file_merging_strategy: same
 
