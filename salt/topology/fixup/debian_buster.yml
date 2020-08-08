@@ -18,6 +18,14 @@ apt:
       package: nftables libnftables1
       pin: release a=buster-backports
       priority: 900
+    00-buster-backports-golang:
+      package: golang-go golang-src
+      pin: release a=buster-backports
+      priority: 900
+    00-buster-backports-git:
+      package: git git-man
+      pin: release a=buster-backports
+      priority: 900
 
   repositories:
     debian-buster:
@@ -37,3 +45,7 @@ uptodate:
   pkgs:
     - iptables
     - nftables
+    - golang-go
+    - golang-src
+    - git
+    - git-man

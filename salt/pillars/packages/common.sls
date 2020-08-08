@@ -16,9 +16,9 @@ packages:
       - ca-certificates
       - curl
       - fio
-      - firewalld
       - fwupd
       - fwupdate
+      - git
       - gnupg
       - gnupg-l10n
       - gnupg-utils

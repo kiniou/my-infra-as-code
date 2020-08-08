@@ -11,7 +11,7 @@ packages:
       - emacs
       - emacs-common-non-dfsg
       - emacs-gtk
-      - git
+      - golang-go
       - git-buildpackage
       - git-cola
       - git-extras
