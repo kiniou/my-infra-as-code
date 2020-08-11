@@ -56,3 +56,6 @@
 [submodule "formulas/apt-formula"]
 	path = formulas/apt-formula
 	url = git@github.com:kiniou/apt-formula.git
+[submodule "formulas/consul-formula"]
+	path = formulas/consul-formula
+	url = git@github.com:kiniou/consul-formula.git
