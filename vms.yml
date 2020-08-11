@@ -3,9 +3,9 @@ test:
     data: 10
   provision:
     salt: {}
-    shell: sh /vagrant/scripts/provision.sh
+    shell: sh /srv/salt/scripts/provision.sh
 
 server:
   provision:
     salt: {}
-    shell: sh /vagrant/scripts/provision.sh
+    shell: sh /srv/salt/scripts/provision.sh
