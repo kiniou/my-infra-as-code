@@ -60,6 +60,7 @@ def configure_node_vm(node, data)
 
   # Virtualbox setup
   node.vm.provider "virtualbox" do |vb, override|
+    vb.auto_nat_dns_proxy = false
     # vb.name = node.vm.hostname
     vb.customize [ "storagectl", :id,
                    "--name", "SATA Controller",
@@ -69,10 +70,13 @@ def configure_node_vm(node, data)
     vb.cpus = data.fetch("cpus", cpus)
     vb.memory = data.fetch("memory", memory)
     override.vm.network "private_network", :type => 'dhcp', :ip => "10.43.0.1", :autoconfig => false
-    vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
-    vb.customize ['modifyvm', :id, '--natdnshostresolver2', 'off']
-    vb.customize ['modifyvm',  :id,  '--natdnsproxy1', 'on']
-    vb.customize ['modifyvm',  :id,  '--natdnsproxy2', 'on']
+    vb.customize ['modifyvm', :id,
+                  '--natdnshostresolver1', 'off',
+                  '--natdnshostresolver2', 'off',
+                  '--natdnsproxy1', 'on',
+                  '--natdnsproxy2', 'off',
+                  '--nicpromisc1', 'allow-all',
+                  '--nicpromisc2', 'allow-all']
     synced_volumes.each do |dest, src|
       override.vm.synced_folder src, dest, type: 'virtualbox', automount: true
     end
