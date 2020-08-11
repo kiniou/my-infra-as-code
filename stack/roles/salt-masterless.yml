@@ -6,13 +6,10 @@ salt:
     file_roots:
       base:
         - /srv/salt/states
-    pillar_roots:
-      base:
-        - /srv/salt/pillars
     ext_pillar_first: True
     ext_pillar:
       - stack: /srv/salt/stack/top.cfg
-      - stack: /srv/salt/stack/fixup.cfg
+      - stack: /srv/salt/stack/bottom.cfg
 
     top_file_merging_strategy: same
 

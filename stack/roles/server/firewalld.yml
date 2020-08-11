@@ -31,6 +31,7 @@ firewalld:
         - http
         - https
         - ssh
+        - dhcpv6-client
       rich_rules:
         - family: ipv4
           ipset:

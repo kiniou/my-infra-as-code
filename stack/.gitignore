@@ -1,3 +1,5 @@
-# don't commit private things except stack configuration
+# don't commit private or overrides except stack configuration
 private/*
 !private/.gitkeep
+overrides/*
+!overrides/.gitkeep

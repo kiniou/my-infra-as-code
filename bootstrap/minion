@@ -12,7 +12,7 @@ pillar_roots:
 ext_pillar_first: True
 ext_pillar:
   - stack: ../stack/top.cfg
-  - stack: ../stack/fixup.cfg
+  - stack: ../stack/bottom.cfg
 
 top_file_merging_strategy: same
 

@@ -1,0 +1,35 @@
+nginx:
+  install_from_repo: false
+  lookup:
+    package: nginx-extras
+  servers:
+    managed:
+      letsencrypt-options-ssl.conf:
+        enabled: true
+        available_dir: /etc/nginx/conf.d
+        enabled_dir: /etc/nginx/conf.d
+        config:
+          - include: /usr/lib/python3/dist-packages/certbot_nginx/options-ssl-nginx.conf
+      default:
+        enabled: true
+        config:
+          - server:
+              - listen: "80 default_server"
+              - listen: "[::]:80 default_server"
+              - server_name: _
+              - location /.well-known/acme-challenge/:
+                  - allow:  all
+                  - default_type: "text/plain"
+              - location /:
+                  - return: 301 https://$host$request_uri
+      default-ssl:
+        enabled: true
+        config:
+          - server:
+              - listen: "443 ssl http2 default_server"
+              - listen: "[::]:443 ssl http2 default_server"
+              - server_name: _
+              - ssl_certificate: /etc/ssl/certs/ssl-cert-snakeoil.pem
+              - ssl_certificate_key: /etc/ssl/private/ssl-cert-snakeoil.key
+              - location /:
+                  - return: 404

@@ -32,6 +32,9 @@ base:
     - docker
     - docker.compose
 
+  'I@docker-containers:*':
+    - docker.containers
+
   'features:traefik':
     - match: pillar
     - traefik

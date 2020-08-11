@@ -1,10 +1,7 @@
-include:
-  - docker
-
 docker:
   use_upstream_repo: true
 
-  {% if grains['os'] == 'Ubuntu' %}
+  {% if __grains__['os'] == 'Ubuntu' %}
   repo:
     version: disco
   {% endif %}

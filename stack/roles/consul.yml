@@ -1,0 +1,29 @@
+consul:
+  service: true
+  version: 1.8.1
+
+firewalld:
+  services:
+    consul-server-rpc:
+      short: consul-server-rpc
+      description: |
+         This is used by servers to handle incoming requests from other agents.
+      ports:
+        tcp:
+          - 8300
+
+    consul-serf-lan:
+      short: consul-serf-lan
+      description: |
+        This is used to handle gossip in the LAN. Required by all agents.
+      ports:
+        tcp:
+          - 8301
+        udp:
+          - 8301
+
+  zones:
+    public:
+      services:
+        - consul-server-rpc
+        - consul-serf-lan

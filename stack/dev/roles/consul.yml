@@ -1,0 +1,6 @@
+consul:
+  config:
+    retry_join_wan:
+      - '_gateway'
+    datacenter: my-infra
+    bind_addr: '{% raw %}{{ GetPrivateInterfaces | include "network" "10.43.0.0/24" | attr "address" }}{% endraw %}'

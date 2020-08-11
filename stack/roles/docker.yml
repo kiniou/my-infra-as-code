@@ -7,3 +7,6 @@ docker:
     init: true
 
   compose_version: '1.25.5'
+  pkg:
+    name: docker.io
+    allow_updates: true

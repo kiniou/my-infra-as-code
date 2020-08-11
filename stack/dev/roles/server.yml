@@ -1,0 +1,7 @@
+firewalld:
+  zones:
+    public:
+      services:
+        - llmnr
+      interfaces:
+        - eth1

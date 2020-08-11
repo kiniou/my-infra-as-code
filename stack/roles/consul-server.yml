@@ -1,0 +1,23 @@
+consul:
+  config:
+    server: true
+    bootstrap_expect: 1
+
+firewalld:
+  services:
+    consul-serf-wan:
+      short: consul-serf-wan
+      description: |
+        This is used by servers to gossip over the WAN, to other servers. As of
+        Consul 0.8 the WAN join flooding feature requires the Serf WAN port
+        (TCP/UDP) to be listening on both WAN and LAN interfaces.
+      ports:
+        tcp:
+          - 8302
+        udp:
+          - 8302
+
+  zones:
+    public:
+      services:
+        - consul-serf-wan

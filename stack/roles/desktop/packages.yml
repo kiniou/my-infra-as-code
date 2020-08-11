@@ -38,8 +38,8 @@ packages:
       - xserver-xorg-input-evdev
       - xserver-xorg-input-kbd
       - xserver-xorg-input-mouse
-      {% if grains['os'] == 'Ubuntu' %}
+      {% if __grains__['os'] == 'Ubuntu' %}
       - firefox
-      {% elif grains['os'] == 'Debian' %}
+      {% elif __grains__['os'] == 'Debian' %}
       - firefox-esr
       {% endif %}

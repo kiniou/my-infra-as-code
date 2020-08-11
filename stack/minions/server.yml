@@ -1,3 +1,9 @@
 roles:
+  - salt-masterless
   - server
+  - webserver
+  - consul
+  - consul-server
+  - docker
 
+environment: dev

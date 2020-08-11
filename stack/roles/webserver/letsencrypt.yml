@@ -1,0 +1,13 @@
+letsencrypt:
+  use_package: true
+  pkgs:
+    - certbot
+    - python3-certbot-nginx
+  config:
+    email: webmaster@example.com
+    authenticator: webroot
+    webroot-path: /var/www
+    agree-tos: true
+    keep-until-expiring: true
+    expand: true
+
