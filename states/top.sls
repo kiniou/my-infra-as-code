@@ -3,6 +3,10 @@ base:
     - salt
     - common.env
 
+  'files:*':
+    - match: pillar
+    - files
+
   'apt:repositories:*':
     - match: pillar
     - apt.repositories
