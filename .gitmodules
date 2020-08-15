@@ -1,5 +1,5 @@
 [submodule "traefik-pebble"]
-	path = salt/states/traefik/files
+	path = states/traefik/files
 	url = git@github.com:kiniou/traefik-pebble.git
 	branch = master
 [submodule "formulas/nginx-formula"]
