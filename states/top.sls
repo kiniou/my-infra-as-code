@@ -7,6 +7,7 @@ base:
     - match: pillar
     - files
 
+  # Packaging setup
   'apt:repositories:*':
     - match: pillar
     - apt.repositories
@@ -27,6 +28,16 @@ base:
     - match: pillar
     - packages.golang
 
+  # Security components configuration
+  'firewalld:*':
+    - match: pillar
+    - firewalld
+
+  'fail2ban:*':
+    - match: pillar
+    - fail2ban
+
+  # Background services configuration
   'features:unbound':
     - match: pillar
     - unbound
@@ -54,6 +65,7 @@ base:
     - match: pillar
     - traefik
 
+  # Tooling install and configuration
   'features:vagrant':
     - match: pillar
     - vagrant
@@ -65,15 +77,6 @@ base:
   'features:packer':
     - match: pillar
     - packer
-
-  'firewalld:*':
-    - match: pillar
-    - firewalld
-
-  'fail2ban:*':
-    - match: pillar
-    - fail2ban
-
 
   'sbuild:*':
     - match: pillar
