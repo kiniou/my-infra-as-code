@@ -38,6 +38,10 @@ base:
     - fail2ban
 
   # Background services configuration
+  'consul:*':
+    - match: pillar
+    - consul
+
   'features:unbound':
     - match: pillar
     - unbound
@@ -100,3 +104,6 @@ manual:
   'I@letsencrypt:*':
     - letsencrypt.domains
     - extends.letsencrypt.nginx
+
+  'I@sbuild:*':
+    - sbuild
