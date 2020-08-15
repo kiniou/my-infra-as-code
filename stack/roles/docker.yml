@@ -6,7 +6,7 @@ docker:
   daemon_config:
     init: true
 
-  compose_version: '1.25.5'
+  compose_version: '1.26.2'
   pkg:
     name: docker.io
     allow_updates: true
