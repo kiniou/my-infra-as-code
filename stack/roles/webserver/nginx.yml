@@ -2,6 +2,28 @@ nginx:
   install_from_repo: false
   lookup:
     package: nginx-extras
+  server:
+    config:
+      worker_processes: auto
+      events:
+        worker_connections: 512
+      http:
+        sendfile: 'on'
+        tcp_nopush: 'on'
+        tcp_nodelay: 'on'
+        keepalive_timeout: '65'
+        types_hash_max_size: '2048'
+        default_type: 'application/octet-stream'
+        access_log: '/var/log/nginx/access.log'
+        error_log: '/var/log/nginx/error.log'
+        gzip: 'off'
+        gzip_disable: '"msie6"'
+        server_tokens: 'off'
+        include:
+          - 'mime.types'
+          - 'conf.d/*.conf'
+          - 'sites-enabled/*'
+
   servers:
     managed:
       letsencrypt-options-ssl.conf:
