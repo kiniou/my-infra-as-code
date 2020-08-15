@@ -1,7 +1,3 @@
-[submodule "traefik-pebble"]
-	path = states/traefik/files
-	url = git@github.com:kiniou/traefik-pebble.git
-	branch = master
 [submodule "formulas/nginx-formula"]
 	path = formulas/nginx-formula
 	url = git@github.com:kiniou/nginx-formula.git
@@ -59,3 +55,8 @@
 [submodule "formulas/consul-formula"]
 	path = formulas/consul-formula
 	url = git@github.com:kiniou/consul-formula.git
+	branch = master
+[submodule "states/traefik/files"]
+	path = states/traefik/files
+	url = git@github.com:kiniou/traefik-pebble.git
+	branch = master
