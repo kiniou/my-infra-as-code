@@ -18,6 +18,7 @@ nginx:
               - listen: "[::]:80 default_server"
               - server_name: _
               - location /.well-known/acme-challenge/:
+                  - root: /var/www/
                   - allow:  all
                   - default_type: "text/plain"
               - location /:
