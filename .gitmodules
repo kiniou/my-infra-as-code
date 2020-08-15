@@ -49,9 +49,11 @@
 [submodule "formulas/chrome-formula"]
 	path = formulas/chrome-formula
 	url = git@github.com:kiniou/chrome-formula.git
+	branch = master
 [submodule "formulas/apt-formula"]
 	path = formulas/apt-formula
 	url = git@github.com:kiniou/apt-formula.git
+	branch = master
 [submodule "formulas/consul-formula"]
 	path = formulas/consul-formula
 	url = git@github.com:kiniou/consul-formula.git
