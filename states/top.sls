@@ -31,6 +31,17 @@ base:
     - match: pillar
     - unbound
 
+  'nginx:*':
+    - match: pillar
+    - extends.nginx.certs
+    - nginx
+
+  'letsencrypt:*':
+    - match: pillar
+    - letsencrypt.install
+    - letsencrypt.config
+    - letsencrypt.service
+
   'docker:*':
     - match: pillar
     - docker
@@ -55,10 +66,6 @@ base:
     - match: pillar
     - packer
 
-  'nginx:*':
-    - match: pillar
-    - nginx
-
   'firewalld:*':
     - match: pillar
     - firewalld
@@ -82,10 +89,11 @@ base:
     - apache
     - apache.config
 
-  'letsencrypt:*':
-    - match: pillar
-    - letsencrypt
-
   'features:google-chrome':
     - match: pillar
     - chrome
+
+manual:
+  'I@letsencrypt:*':
+    - letsencrypt.domains
+    - extends.letsencrypt.nginx
