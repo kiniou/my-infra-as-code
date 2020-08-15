@@ -91,11 +91,6 @@ base:
     - match: pillar
     - systemd-sleep
 
-  'apache:*':
-    - match: pillar
-    - apache
-    - apache.config
-
   'features:google-chrome':
     - match: pillar
     - chrome
