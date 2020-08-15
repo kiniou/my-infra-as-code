@@ -29,7 +29,7 @@ create certificate for {{ domainlist | join(',') }}:
             -keyout /etc/nginx/ssl/live/{{ setname }}/privkey.pem \
             -out /etc/nginx/ssl/live/{{ setname }}/fullchain.pem \
             -subj '/O=My Infra (temporary self-signed certificate for {{ setname }})/CN={{ common_name }}' \
-            -addext "subjectAltName = {{ setname | map('regex_replace', '^(.*)$', 'DNS:\\1') | join(',') }}"
+            -addext "subjectAltName = {{ domainlist | map('regex_replace', '^(.*)$', 'DNS:\\1') | join(',') }}"
     - unless:
         - test -e /etc/nginx/ssl/live/{{ setname }}/fullchain.pem
         - test -e /etc/nginx/ssl/live/{{ setname }}/privkey.pem
