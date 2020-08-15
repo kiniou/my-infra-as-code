@@ -1,6 +1,3 @@
-salt:
-  py_ver: py3
-
 apt:
   remove_sources_list: true
   clean_sources_list_d: false
