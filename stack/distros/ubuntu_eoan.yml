@@ -1,6 +1,0 @@
-{% set release = pillar.get('salt', {}).get('release') %}
-{% if release %}
-salt:
-  pkgrepo: 'deb [arch=amd64] http://repo.saltstack.com/py3/ubuntu/18.04/amd64/archive/{{ release }} bionic main'
-  key_url: 'https://repo.saltstack.com/py3/ubuntu/18.04/amd64/archive/{{ release }}/SALTSTACK-GPG-KEY.pub'
-{% endif %}
