@@ -13,7 +13,7 @@ apt:
       pin: release a=buster-backports
       priority: 900
     00-buster-backports-git:
-      package: git git-man
+      package: git git-man gitk
       pin: release a=buster-backports
       priority: 900
 
