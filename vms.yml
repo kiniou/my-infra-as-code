@@ -9,3 +9,9 @@ server:
   provision:
     salt: {}
     shell: sh /srv/salt/scripts/provision.sh
+
+test-dev-sid:
+  synced_volumes_type: nfs
+  provision:
+    salt: {}
+    shell: sh /srv/salt/scripts/provision.sh

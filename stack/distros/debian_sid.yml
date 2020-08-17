@@ -1,0 +1,26 @@
+apt:
+  repositories:
+    debian-sid:
+      distro: sid
+      url: http://deb.debian.org/debian
+      comps: [main, contrib, non-free]
+
+    docker-ce:
+      distro: buster
+      url: https://download.docker.com/linux/debian
+      comps: [stable]
+      key_url: https://download.docker.com/linux/debian/gpg
+
+{% load_yaml as salt %}
+py_ver: py3
+oscodename: buster
+osmajorrelease: 10
+release: 3001
+{% endload %}
+
+salt:
+  pkgrepo: deb [arch=amd64] http://repo.saltstack.com/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }} {{ salt.oscodename }} main
+  key_url: https://repo.saltstack.com/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }}/SALTSTACK-GPG-KEY.pub
+
+docker:
+  use_upstream_repo: false

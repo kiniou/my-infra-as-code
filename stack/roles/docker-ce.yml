@@ -1,5 +1,5 @@
 docker:
-  use_upstream_repo: true
+  use_upstream_repo: {{ stack.get('docker', {}).get('use_upstream_repo', None) | default(true) }}
 
   {% if __grains__['os'] == 'Ubuntu' %}
   repo:

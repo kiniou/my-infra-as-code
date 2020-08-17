@@ -1,7 +1,4 @@
 apt:
-  remove_sources_list: true
-  clean_sources_list_d: false
-
   preferences:
     00-buster-backports-iptables:
       package: iptables libip4tc2 libip6tc2 libiptc0 libxtables12 libnftnl11
