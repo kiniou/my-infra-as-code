@@ -42,6 +42,8 @@ def configure_node_vm(node, data)
     '/srv/salt' => '.',
   }.rmerge(data.fetch('synced_volumes', {}))
 
+  synced_volumes_type = data.fetch('synced_volumes_type', 'default')
+
   # Defaults
   memory = 2048
   cpus = 1
@@ -54,7 +56,11 @@ def configure_node_vm(node, data)
     lv.graphics_type = 'spice'
     lv.video_type = 'virtio'
     synced_volumes.each do |dest, src|
-      override.vm.synced_folder src, dest, type: '9p', accessmode: "squash"
+      if synced_volumes_type == 'nfs'
+        override.vm.synced_folder src, dest, type: 'nfs'
+      else
+        override.vm.synced_folder src, dest, type: '9p', accessmode: "squash"
+      end
     end
   end
 
@@ -78,7 +84,11 @@ def configure_node_vm(node, data)
                   '--nicpromisc1', 'allow-all',
                   '--nicpromisc2', 'allow-all']
     synced_volumes.each do |dest, src|
-      override.vm.synced_folder src, dest, type: 'virtualbox', automount: true
+      if synced_volumes_type == 'nfs'
+        override.vm.synced_folder src, dest, type: 'nfs'
+      else
+        override.vm.synced_folder src, dest, type: 'virtualbox', automount: true
+      end
     end
   end
 end
