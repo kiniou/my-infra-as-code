@@ -1,4 +1,5 @@
 roles:
+  - salt-masterless
   - desktop
   - dev
   - server
