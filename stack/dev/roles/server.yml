@@ -5,3 +5,91 @@ firewalld:
         - llmnr
       interfaces:
         - eth1
+    trusted:
+      target: ACCEPT
+      interfaces:
+        - docker0
+
+docker-containers:
+  lookup:
+    mailhog:
+      image: mailhog/mailhog:latest
+      cmd: ~
+      pull_before_start: true
+      remove_on_stop: true
+      runoptions:
+        - --rm
+        - --log-driver=journald
+        - --publish=127.0.0.1:1025:1025
+        - --publish=127.0.0.1:8025:8025
+      stopoptions:
+        - --time 10
+    pebble:
+      image: letsencrypt/pebble:latest
+      args:
+        - pebble -config /etc/pebble.conf
+      cmd: ~
+      pull_before_start: true
+      remove_on_stop: true
+      runoptions:
+        - --rm
+        - --log-driver=journald
+        - --mount type=bind,source=/etc/pebble.conf,target=/etc/pebble.conf,readonly
+        - --publish=127.0.0.1:14000:14000
+        - --publish=127.0.0.1:15000:15000
+        - -e PEBBLE_VA_NOSLEEP=1
+        - -e PEBBLE_WFE_NONCEREJECT=0
+      stopoptions:
+        - --time 10
+
+{% load_yaml as domainsets %}
+mailhog:
+  - mailhog.my-infra.test
+mailhog-multi:
+  - mailhog-test1.my-infra.test
+  - mailhog-test2.my-infra.test
+{% endload %}
+
+letsencrypt:
+  config:
+    server: https://localhost:14000/dir
+    no-verify-ssl: true
+  domainsets: {{ domainsets }}
+
+nginx:
+  servers:
+    managed:
+      {%- for domainset, domains in domainsets.items() %}
+      {{ domainset }}:
+        enabled: true
+        config:
+          - server:
+              - listen: "443 http2 ssl"
+              - listen: "[::]:443 http2 ssl"
+              - server_name: {{ domains }}
+              - ssl_certificate: /etc/nginx/ssl/live/{{ domainset }}/fullchain.pem
+              - ssl_certificate_key: /etc/nginx/ssl/live/{{ domainset }}/privkey.pem
+              - location /:
+                  - proxy_pass: http://localhost:8025
+      {% endfor %}
+
+files:
+  /etc/pebble.conf:
+    contents: |
+        {
+          "pebble": {
+            "listenAddress": "0.0.0.0:14000",
+            "managementListenAddress": "0.0.0.0:15000",
+            "certificate": "test/certs/localhost/cert.pem",
+            "privateKey": "test/certs/localhost/key.pem",
+            "httpPort": 80,
+            "tlsPort": 443,
+            "ocspResponderURL": "",
+            "externalAccountBindingRequired": false
+          }
+        }
+
+consul:
+  register:
+    - name: mailhog
+      port: 443
