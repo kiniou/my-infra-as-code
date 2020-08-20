@@ -57,7 +57,7 @@ def configure_node_vm(node, data)
     lv.video_type = 'virtio'
     synced_volumes.each do |dest, src|
       if synced_volumes_type == 'nfs'
-        override.vm.synced_folder src, dest, type: 'nfs'
+        override.vm.synced_folder src, dest, type: 'nfs', nfs_version: 4, nfs_udp: false
       else
         override.vm.synced_folder src, dest, type: '9p', accessmode: "squash"
       end
@@ -85,7 +85,7 @@ def configure_node_vm(node, data)
                   '--nicpromisc2', 'allow-all']
     synced_volumes.each do |dest, src|
       if synced_volumes_type == 'nfs'
-        override.vm.synced_folder src, dest, type: 'nfs'
+        override.vm.synced_folder src, dest, type: 'nfs', nfs_version: 4, nfs_udp: false
       else
         override.vm.synced_folder src, dest, type: 'virtualbox', automount: true
       end
