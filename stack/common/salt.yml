@@ -1,4 +1,4 @@
 salt:
-  release: '3001'
+  release: '3002'
   install_packages: true
   py_ver: py3
