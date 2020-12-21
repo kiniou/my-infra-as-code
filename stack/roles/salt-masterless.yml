@@ -1,5 +1,6 @@
 salt:
   minion:
+    test: True
     standalone: True
     master_type: 'disable'
     file_client: local
