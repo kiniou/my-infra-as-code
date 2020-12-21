@@ -1,0 +1,23 @@
+{%- set tplroot = tpldir.split('/')[0] %}
+{% import_yaml tplroot ~ "/defaults.yml" as default_settings %}
+
+{% set defaults = salt['grains.filter_by']( default_settings,
+  default='terraform'
+) %}
+
+{% set terraform = salt['pillar.get'](
+  'terraform',
+  default=defaults,
+  merge=True
+)
+%}
+
+{% set _ = terraform %}
+{% load_yaml as data %}
+url: https://releases.hashicorp.com/terraform/{{ _.version }}/terraform_{{ _.version }}_linux_{{ _.arch }}.zip
+pkgfile: terraform_{{ _.version }}_linux_{{ _.arch }}.zip
+sha256sums_url: https://releases.hashicorp.com/terraform/{{ _.version }}/terraform_{{ _.version }}_SHA256SUMS
+sha256sums_file: terraform_{{ _.version }}_SHA256SUMS
+{% endload %}
+
+{% do salt.slsutil.update( terraform, data) %}

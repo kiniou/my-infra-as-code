@@ -82,6 +82,10 @@ base:
     - match: pillar
     - packer
 
+  'features:terraform':
+    - match: pillar
+    - terraform
+
   'sbuild:*':
     - match: pillar
     # sbuild is quite long to state.apply so it needs to be called manually with `salt-call state.apply sbuild`
