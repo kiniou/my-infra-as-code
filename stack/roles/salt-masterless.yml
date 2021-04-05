@@ -7,6 +7,8 @@ salt:
     file_roots:
       base:
         - /srv/salt/states
+      manual:
+        - /srv/salt/states
     ext_pillar_first: True
     ext_pillar:
       - stack: /srv/salt/stack/top.cfg
@@ -14,6 +16,9 @@ salt:
 
     top_file_merging_strategy: same
 
+    env_order:
+      - base
+      - manual
     default_top: base
 
     pillar_merge_lists: false
