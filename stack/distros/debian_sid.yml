@@ -23,8 +23,8 @@ release: 3003
 {% endload %}
 
 salt:
-  pkgrepo: deb [arch=amd64] http://repo.saltstack.com/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }} {{ salt.oscodename }} main
-  key_url: https://repo.saltstack.com/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }}/SALTSTACK-GPG-KEY.pub
+  pkgrepo: deb [arch=amd64] http://repo.saltproject.io/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }} {{ salt.oscodename }} main
+  key_url: https://repo.saltproject.io/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }}/SALTSTACK-GPG-KEY.pub
 
 docker:
   use_upstream_repo: false
