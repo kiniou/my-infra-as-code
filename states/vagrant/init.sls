@@ -21,8 +21,8 @@ vagrant-download:
         curl -sSL -o {{ vagrant.pkgfile }} {{ vagrant.url }} && sha256sum --ignore-missing -c {{ vagrant.sha256sums_file }}
     - cwd: {{ vagrant.cachedir }}
     - unless:
-        - test -f {{ vagrant.pkgfile }}
-        - sha256sum --ignore-missing -c {{ vagrant.sha256sums_file }}
+        - cd {{ vagrant.cachedir }} && test -f {{ vagrant.pkgfile }}
+        - cd {{ vagrant.cachedir }} && sha256sum --ignore-missing -c {{ vagrant.sha256sums_file }}
     - require:
         - id: {{ vagrant.cachedir }}/{{ vagrant.sha256sums_file }}
         - file: {{ vagrant.cachedir }}
@@ -32,5 +32,5 @@ vagrant-install:
     - name: |
         {{ vagrant.install_cmd | format(vagrant.pkgfile)}}
     - cwd: {{ vagrant.cachedir }}
-    - require:
+    - onchanges:
         - id: vagrant-download

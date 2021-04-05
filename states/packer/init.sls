@@ -21,8 +21,8 @@ packer-download:
         curl -sSL -o {{ packer.pkgfile }} {{ packer.url }} && sha256sum --ignore-missing -c {{ packer.sha256sums_file }}
     - cwd: {{ packer.cachedir }}
     - unless:
-        - test -f {{ packer.pkgfile }}
-        - sha256sum --ignore-missing -c {{ packer.sha256sums_file }}
+        - cd {{ packer.cachedir }} && test -f {{ packer.pkgfile }}
+        - cd {{ packer.cachedir }} && sha256sum --ignore-missing -c {{ packer.sha256sums_file }}
     - require:
         - id: {{ packer.cachedir }}/{{ packer.sha256sums_file }}
         - file: {{ packer.cachedir }}
@@ -33,5 +33,5 @@ packer-install:
     - name: |
         unzip -o {{ packer.pkgfile }} packer -d /usr/local/bin
     - cwd: {{ packer.cachedir }}
-    - require:
+    - onchanges:
         - id: packer-download

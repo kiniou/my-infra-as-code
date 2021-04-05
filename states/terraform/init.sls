@@ -21,8 +21,8 @@ terraform-download:
         curl -sSL -o {{ terraform.pkgfile }} {{ terraform.url }} && sha256sum --ignore-missing -c {{ terraform.sha256sums_file }}
     - cwd: {{ terraform.cachedir }}
     - unless:
-        - test -f {{ terraform.pkgfile }}
-        - sha256sum --ignore-missing -c {{ terraform.sha256sums_file }}
+        - cd {{ terraform.cachedir }} && test -f {{ terraform.pkgfile }}
+        - cd {{ terraform.cachedir }} && sha256sum --ignore-missing -c {{ terraform.sha256sums_file }}
     - require:
         - id: {{ terraform.cachedir }}/{{ terraform.sha256sums_file }}
         - file: {{ terraform.cachedir }}
@@ -33,5 +33,5 @@ terraform-install:
     - name: |
         unzip -o {{ terraform.pkgfile }} terraform -d /usr/local/bin
     - cwd: {{ terraform.cachedir }}
-    - require:
+    - onchanges:
         - id: terraform-download
