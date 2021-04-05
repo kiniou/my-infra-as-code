@@ -21,7 +21,6 @@ packages:
       - sddm
       - gwenview
       - ibus
-      - keepassxc
       - mesa-utils
       - mesa-utils-extra
       - mpv
@@ -29,7 +28,6 @@ packages:
       - suckless-tools
       - timewarrior
       - vulkan-tools
-      - vulkan-utils
       - webp
       - wpagui
       - xmms2
