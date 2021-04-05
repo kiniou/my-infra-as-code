@@ -5,7 +5,8 @@ docker:
   repo:
     version: disco
   {% endif %}
-
+  daemon_config:
+    data-root: /srv/docker
   pkg:
     name: docker-ce
     allow_updates: true
