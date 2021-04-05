@@ -1,5 +1,7 @@
+# -*- mode: salt -*-
+{% set basedir = "/srv/data/schroot" %}
 debootstrap:
-  basedir: /var/lib/schroot
+  basedir: {{ basedir }}
   vendor:
     debian:
       repositories:
@@ -11,7 +13,7 @@ debootstrap:
         default: http://archive.ubuntu.com/ubuntu
 
 sbuild:
-  basedir: /var/lib/schroot
+  basedir: {{ basedir }}
   chroots:
     sid:
       vendor: debian
