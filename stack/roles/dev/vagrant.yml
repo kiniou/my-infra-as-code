@@ -4,3 +4,8 @@ vagrant:
   plugins:
     vagrant-libvirt:
     sahara:
+
+virtualbox:
+  {% if __grains__.get('oscodename') == 'sid' %}
+  use_upstream_repo: false
+  {% endif %}
