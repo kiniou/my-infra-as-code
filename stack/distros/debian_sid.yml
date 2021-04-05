@@ -7,9 +7,12 @@ apt:
       comps: [main, contrib, non-free]
 
     docker-ce:
+      arch:
+        - amd64
       distro: buster
       url: https://download.docker.com/linux/debian
-      comps: [stable]
+      comps:
+        - stable
       key_url: https://download.docker.com/linux/debian/gpg
 
 {% load_yaml as salt %}
