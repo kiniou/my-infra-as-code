@@ -19,7 +19,7 @@ apt:
 py_ver: py3
 oscodename: buster
 osmajorrelease: 10
-release: 3001
+release: 3003
 {% endload %}
 
 salt:
