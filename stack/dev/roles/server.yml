@@ -1,3 +1,4 @@
+# -*- mode: salt -*-
 firewalld:
   zones:
     public:

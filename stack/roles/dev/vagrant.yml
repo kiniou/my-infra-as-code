@@ -1,3 +1,5 @@
+# -*- mode: salt -*-
+
 vagrant:
   plugins:
     vagrant-vbguest:
