@@ -1,4 +1,4 @@
 packages-up-to-date:
-  pkg.latest:
+  pkg.uptodate:
     - refresh: True
     - pkgs: {{ pillar.get('uptodate', {}).get('pkgs', None) | json}}
