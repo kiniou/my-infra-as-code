@@ -1,4 +1,4 @@
 terraform:
-  version: 0.14.3
+  version: 0.14.11
   arch: amd64
   cachedir: /var/cache/terraform
