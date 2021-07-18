@@ -1,0 +1,19 @@
+docker:
+  wanted:
+    - docker
+    - compose
+  # use_upstream_repo: {{ stack.get('docker', {}).get('use_upstream_repo', False) }}
+  pkg:
+    docker:
+      daemon_config:
+        data-root: /srv/docker/data
+        init: true
+        userland-proxy: false
+        log-driver: "local"
+        log-opts:
+          max-size: "10m"
+          max-file: "3"
+      use_upstream: repo
+      name: docker-ce
+      repo: false
+        # name: deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable

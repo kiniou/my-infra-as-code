@@ -5,14 +5,10 @@ file_roots:
   base:
     - ../states
 
-pillar_roots:
-  base:
-    - ../pillars
-
 ext_pillar_first: True
 ext_pillar:
-  - stack: ../stack/top.cfg
-  - stack: ../stack/bottom.cfg
+  - stack: ../pillar.stack/top.cfg
+  - stack: ../pillar.stack/bottom.cfg
 
 top_file_merging_strategy: same
 

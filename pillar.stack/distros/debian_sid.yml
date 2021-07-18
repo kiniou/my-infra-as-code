@@ -9,7 +9,7 @@ apt:
     docker-ce:
       arch:
         - amd64
-      distro: buster
+      distro: bullseye
       url: https://download.docker.com/linux/debian
       comps:
         - stable
@@ -26,5 +26,3 @@ salt:
   pkgrepo: deb [arch=amd64] http://repo.saltproject.io/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }} {{ salt.oscodename }} main
   key_url: https://repo.saltproject.io/{{ salt.py_ver }}/debian/{{ salt.osmajorrelease }}/amd64/{{ salt.release }}/SALTSTACK-GPG-KEY.pub
 
-docker:
-  use_upstream_repo: false
