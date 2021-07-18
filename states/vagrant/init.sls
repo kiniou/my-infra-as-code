@@ -27,10 +27,22 @@ vagrant-download:
         - id: {{ vagrant.cachedir }}/{{ vagrant.sha256sums_file }}
         - file: {{ vagrant.cachedir }}
 
+vagrant-installed:
+  cmd.run:
+    - name: |
+        echo "changed=yes comment='vagrant does not seems to be installed'"
+    - stateful:
+        - test_name: echo "changed=yes comment='vagrant does not seems to be installed'"
+    - unless:
+        - test "$(vagrant --version 2>/dev/null| grep -oE '[0-9.]+')" '=' "{{ vagrant.version }}"
+        - /usr/bin/dpkg -l vagrant
+        - /usr/bin/which vagrant
+
 vagrant-install:
   cmd.run:
     - name: |
         {{ vagrant.install_cmd | format(vagrant.pkgfile)}}
     - cwd: {{ vagrant.cachedir }}
-    - onchanges:
+    - onchanges_any:
+        - id: vagrant-installed
         - id: vagrant-download
