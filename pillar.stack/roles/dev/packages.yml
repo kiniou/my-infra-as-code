@@ -10,7 +10,7 @@ packages:
       - devscripts
       - emacs
       - emacs-common-non-dfsg
-      - emacs-gtk
+      - emacs-lucid
       - golang-go
       - git-buildpackage
       - git-cola
